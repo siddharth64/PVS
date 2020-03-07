@@ -1,0 +1,26 @@
+prop_logic  % [ parameters ]
+		: THEORY
+
+  BEGIN
+
+  % ASSUMING
+   % assuming declarations
+  % ENDASSUMING
+
+ A, B, C, D: bool
+
+ ex0: LEMMA A OR NOT A
+
+ ex0b: LEMMA (NOT A) OR (A => B) OR (NOT B)
+
+ ex1: LEMMA A IMPLIES (B OR A)
+
+ ex2: LEMMA (A AND (A IMPLIES B)) IMPLIES B
+
+ ex3: LEMMA ((A IMPLIES B) IMPLIES A) IMPLIES (B IMPLIES (B AND A))
+
+ taut0: LEMMA NOT (true = false)
+
+ test0: LEMMA (true = false)
+
+  END prop_logic

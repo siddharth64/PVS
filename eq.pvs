@@ -1,0 +1,36 @@
+eq  % [ parameters ]
+		: THEORY
+
+  BEGIN
+
+  % ASSUMING
+   % assuming declarations
+  % ENDASSUMING
+
+  T : TYPE+
+  a,b,c : T
+  f : [T -> T]
+
+  x,y,z: bool
+
+  ex1: LEMMA f(f(f(a))) = f(a) IMPLIES f(f(f(f(f(a))))) = f(a)
+
+  ex2: LEMMA NOT x OR (x=y IMPLIES y)
+
+%  Lemma or_assoc :
+%  forall P Q R : Prop, P \/ (Q \/ R) <-> (P \/ Q) \/ R.
+%Proof.
+%  intros P Q R. split.
+%  - intros [H | [H | H]].
+%    + left. left. apply H.
+%    + left. right. apply H.
+%    + right. apply H.
+%  - intros [[H | H] | H].
+%    + left. apply H.
+%    + right. left. apply H.
+%    + right. right. apply H.
+%Qed.
+  or_assoc_with_eq : LEMMA ((a=b) OR (b=c OR c=a)) IFF ((a=b OR b=c) OR a=c)
+
+
+  END eq

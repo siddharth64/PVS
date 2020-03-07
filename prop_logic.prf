@@ -1,0 +1,46 @@
+(prop_logic
+ (ex0 0
+  (ex0-2 "non-primitive" 3792386094 ("" (ground) nil nil) nil shostak)
+  (ex0-1 nil 3789795801 ("" (flatten) nil nil) nil shostak))
+ (ex0b 0
+  (non-primitive "non-primitive" 3792386318 ("" (prop) nil nil) nil
+   shostak)
+  (ex0b-1 nil 3789796460 ("" (flatten) nil nil) nil shostak))
+ (ex1 0
+  (ex1-2 "non-primitive" 3792386429 ("" (bddsimp) nil nil) nil shostak)
+  (ex1-1 nil 3789796507 ("" (flatten) nil nil) nil shostak))
+ (ex2 0
+  (ex2-2 "Non-primitive" 3792386808 ("" (prop) nil nil) nil shostak)
+  (ex2-1 nil 3789796570
+   ("" (flatten)
+    (("" (split) (("1" (propax) nil nil) ("2" (propax) nil nil)) nil))
+    nil)
+   nil shostak))
+ (ex3 0
+  (ex3-2 "Non-primitive" 3792386925 ("" (bddsimp) nil nil) nil shostak)
+  (ex3-1 nil 3789796603
+   ("" (flatten)
+    (("" (split)
+      (("1" (split) (("1" (propax) nil nil) ("2" (propax) nil nil))
+        nil)
+       ("2" (flatten) nil nil))
+      nil))
+    nil)
+   nil shostak))
+ (taut0 0
+  (taut0-3 "non-primitive" 3792387108 ("" (ground) nil nil) nil
+   shostak)
+  (taut0-2 nil 3792387001
+   ("" (checkpoint)
+    (("" (checkpoint) (("" (simplify) (("" (propax) nil)))))) nil)
+   nil nil)
+  (taut0-1 nil 3789796662 ("" (simplify) (("" (propax) nil nil)) nil)
+   nil shostak))
+ (test0 0
+  (test0-1 nil 3789797347
+   ("" (iff)
+    (("" (split) (("1" (postpone) nil nil) ("2" (propax) nil nil))
+      nil))
+    nil)
+   nil shostak)))
+

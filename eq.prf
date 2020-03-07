@@ -1,0 +1,34 @@
+(eq (ex1 0
+     (ex1-2 "non-primitive" 3792388156 ("" (ground) nil nil) nil
+      shostak)
+     (ex1-1 nil 3792387862
+      ("" (flatten) (("" (replace -1) (("" (propax) nil nil)) nil))
+       nil)
+      nil shostak))
+    (ex2 0
+     (ex2-2 "non-primitive" 3792388262 ("" (ground) nil nil) nil
+      shostak)
+     (ex2-1 nil 3792388170
+      ("" (flatten) (("" (replace -1) (("" (propax) nil nil)) nil))
+       nil)
+      nil shostak))
+    (or_assoc_with_eq 0
+     (or_assoc_with_eq-2 "non-primitive" 3792388396
+      ("" (ground) nil nil) nil shostak)
+     (or_assoc_with_eq-1 nil 3792388272
+      ("" (split)
+       (("1" (flatten)
+         (("1" (split)
+           (("1" (propax) nil nil) ("2" (propax) nil nil)
+            ("3" (replace -1) (("3" (propax) nil nil)) nil))
+           nil))
+         nil)
+        ("2" (flatten)
+         (("2" (split)
+           (("1" (propax) nil nil) ("2" (propax) nil nil)
+            ("3" (replace -1) (("3" (propax) nil nil)) nil))
+           nil))
+         nil))
+       nil)
+      nil shostak)))
+
