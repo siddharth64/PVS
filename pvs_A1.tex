@@ -1,0 +1,87 @@
+\documentclass[a4paper]{article}
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper]{geometry}
+
+%% Useful packages
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\title{PVS Assignment 1}
+\author{Siddharth G}
+
+
+\date{\vspace{-5ex}}
+
+\begin{document}
+\maketitle
+
+\itemize
+
+\item \textbf{Q3}
+\begin{verbatim}
+data BAG:= P Nat Nat  % The Prouct type. The first coordinate indicates the number of 
+                      % black balls, and the second indicates the number of whit balls.
+
+f::BAG -> BAG
+f (P m n)
+	| m+n<=1 = P m n
+	| otherwise = case () of 
+				  () | a<m && b<m = f(P (m-2) (n+1))                 % both black
+				  	  | (a<m && b>=m) || (a>=m && b<m) = f(P m (n-1)) % different colours
+				  	  | otherwise = f(P m (n-1))                      % both white
+
+       where (a,b) = randomPair(m+n)                 % <m is black, else white
+\end{verbatim}
+
+What is the colour of the last ball? - 
+\begin{verbatim} first(f (P m n)) \end{verbatim} 
+1 indicates a black ball and 0 indicates a white ball.
+
+Inductive proof:
+\begin{proof}
+Let us induct on $m+n$. 
+Base cases: $m+n=0$ or $1$. Trivial since  \begin{verbatim} f (P m n) = P m n \end{verbatim} and there are no draws from the bag.
+
+Induction step: Assume the hypothesis for $m+n=k$. \\
+ Let $m+n=k+1$, 
+ $randomPair$ chooses two (distinct) balls. The $case ()$ condition appropriately adds an extra ball whose colour depends on $a$ and $b$. The new arguments $m'$ and $n'$  have the property that $m'+n'=k$ in all the three cases of $case()$. Thus $f$ satisfies the specification by the induction hypothesis.
+\end{proof}
+\newpage
+
+\item \textbf{Q4}
+\begin{verbatim}
+	findMajority :: [Char] -> Char
+	findMajority L = aux L 'F' 0
+	
+	aux :: [Char] -> Char -> Int -> Char
+	aux [] x i = x
+	aux v:vs x i
+		| i=0 = aux vs v 1
+		| x == v = aux vs v (i+1)
+		| otherwise = aux vs x (i-1)
+\end{verbatim} 
+
+\begin{proof}
+	Induct on size of the list of votes (L).
+	Base case: $|L|=1$. 
+	\begin{verbatim}
+	findmajority [x] = aux L 'F' 0 = x  
+	\end{verbatim} 
+	which is the majority.	
+	\\ \\
+	Induction step: Assume correctness for $|L|=k$. \\
+	Let $|L|=k+1$. Assume that the majority element for the first $k$ elements is $x$. Then, $i>0$ and the number of elements $ \neq x$ are at most $k/2-i$, and regardless of the last vote, the majority remains with $x$ (since we are guaranteed a majority). \\
+	If $i=0$, then $x$ is not the majority element. Since we are guaranteed a majority at the end of the list, and we have no majority for the first $k$ elements, the majority is induced by the last element of $L$, which is exactly what $aux$ assigns as the majority element (first guarded line).  
+	\end{proof}
+	
+\end{document}
