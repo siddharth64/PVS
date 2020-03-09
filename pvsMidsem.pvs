@@ -1,0 +1,38 @@
+  % [ parameters ]
+tailfact		: THEORY
+
+  BEGIN
+
+  i, j: VAR nat
+  n, m: VAR nat
+
+ tailfact(n, m): RECURSIVE nat =
+   IF n=0 THEN m
+   ELSE tailfact(n-1, n*m) ENDIF
+   MEASURE n
+
+  myfact(i): RECURSIVE nat =
+  (IF i = 0 THEN 1 ELSE i * myfact(i - 1) ENDIF)
+  MEASURE (lambda (i: nat): (IF i <= 0 THEN 0 ELSE i ENDIF))
+
+  fact_eq: LEMMA myfact(n) = tailfact(n,1)
+
+%Welcome to PVS Part of Mid-term		30 Points
+%This theory has two versions of recursive definitions of factorial, one is a %tail recursive one and the other a general recursive version.
+%
+%Q1: Type check the file and review the TCCs generated.  Provide clear and %brief explanaton for the reason PVS generated each of the TCCs
+%
+%Q2: Prove all the TCCs generated.
+%
+%Q3: Construct a proof for the fact_eq lemma that shows the equivalence between 
+%myfact and tailfact.
+%(a) First construct a simple inductive proof for the lemma on paper.  You are %required to
+% submit your paper proof as well.
+%(b) Mechanize your proof in PVS.  Feel free use prop, ground, or assert as you %feel fit in your proof.
+%
+%
+%
+%
+%
+
+  END tailfact
