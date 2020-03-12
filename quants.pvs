@@ -1,0 +1,46 @@
+quants  % [ parameters ]
+		: THEORY
+
+  BEGIN
+
+  % ASSUMING
+   % assuming declarations
+  % ENDASSUMING
+
+
+  T: TYPE
+  T0: TYPE+
+  P: [T -> bool]
+  f: [nat -> nat]
+  Q: [T, T -> bool]
+  x, y, z: VAR T
+  a: T0
+  P0: [T0 -> bool]
+  
+  ex1:  LEMMA  FORALL x: EXISTS y: x = y
+  ex1a: CONJECTURE EXISTS x: FORALL y: x = y
+  ex1b: CONJECTURE EXISTS (x: nat) : (FORALL (y: nat): x <= y)
+  ex1c:  LEMMA  FORALL (x: nat) : (EXISTS (y: nat) : f(x) = y)
+  ex1d:  LEMMA  FORALL (x,y: nat) : (EXISTS (i: nat) : x-i = y)
+  
+  ex2: CONJECTURE (FORALL x: P(x)) IMPLIES (EXISTS x: P(x))
+  
+  ex3: LEMMA (EXISTS x: (FORALL y: Q(x, y)))
+               IMPLIES (FORALL y: EXISTS x: Q(x, y))
+
+  ex4a: CONJECTURE (EXISTS x: true) OR (FORALL x: false)
+
+  ex4: CONJECTURE EXISTS (x: T0): (P0(x) => FORALL (y: T0): P0(y))
+
+  ex4b: CONJECTURE (EXISTS x: TRUE) => (EXISTS x : (P(x) => FORALL y: P(y)))
+
+
+  identity_fn_applied_twice : THEOREM
+  (forall (f : [bool -> bool]) :
+       (forall (x:bool): f(x) = x) => (forall (b : bool): f(f(b)) = b) )
+
+  m, n, o: VAR nat
+  x,b: VAR bool
+  
+  END quants
+
