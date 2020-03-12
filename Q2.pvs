@@ -1,0 +1,20 @@
+Q2  % [ parameters ]
+		: THEORY
+
+  BEGIN
+
+  % ASSUMING
+   % assuming declarations
+  % ENDASSUMING
+
+  %(A) Let P the type of people and let f:P -> P be the function that assigns a person to their father. Let b=Bob, a=Andrew, ji=Jim, j=Joe.
+  P:TYPE
+  a,b,j,ji,x: VAR P
+  f,g:[P -> P]
+
+  ex1: LEMMA b=f(f(j)) AND a=f(f(ji)) AND j=f(ji) IMPLIES b=f(a)
+
+  ex2: LEMMA f(f(f(x)))=x AND x=f(f(x)) IMPLIES f(x)=x
+
+  ex3: LEMMA f(g(f(x)))=x AND x=f(x) IMPLIES f(g(f(g(f(g(x))))))=x
+  END Q2

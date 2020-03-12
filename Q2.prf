@@ -1,0 +1,25 @@
+(Q2
+ (f_TCC1 0
+  (f_TCC1-1 nil 3792399468 ("" (existence-tcc) nil nil) nil nil))
+ (ex1 0
+  (ex1-1 nil 3792399469
+   ("" (skosimp*)
+    (("" (replace -1)
+      (("" (replace -2) (("" (replace -3) (("" (propax) nil nil)) nil))
+        nil))
+      nil))
+    nil)
+   nil shostak))
+ (ex2 0
+  (ex2-1 nil 3792399692
+   ("" (skosimp*)
+    (("" (replace -2 (-1) RL) (("" (propax) nil nil)) nil)) nil)
+   nil shostak))
+ (ex3 0
+  (ex3-1 nil 3792399973
+   ("" (skosimp*)
+    (("" (replace -2 (-1) RL)
+      (("" (replace -1) (("" (replace* -1) nil nil)) nil)) nil))
+    nil)
+   nil shostak)))
+
