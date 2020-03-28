@@ -1,0 +1,36 @@
+\documentclass[a4paper]{article}
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper]{geometry}
+
+%% Useful packages
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\title{PVS Assignment 2 (liftif)}
+\author{Siddharth G}
+
+
+\date{\vspace{-5ex}}
+
+\begin{document}
+\maketitle
+
+\itemize
+
+\item \emph{1(a):} \textbf{assert} work on \textbf{if}-expressions only if the \textbf{if} condition can be simplified to \textit{true} or simplified to \textit{false} (prover-guide pg. 80). Since this is not possible in this case, \textbf{assert} does not work.
+
+\item \emph{1(b):} pg. 45 of the prover-guide states that \textbf{split} works on \textbf{IF(B,C,D)} in the consequent by collecting formulas of the sort $ B \supset C$ or $\neg B \supset D$. Since neither of these occur in \textit{iflemma1}, \textbf{split} does not have an effect. \textbf{prop} repeatedly uses \textbf{split} and \textbf{flatten}, which for similar reasons, has no effect. \textbf{ground} uses \textbf{prop} and \textbf{assert}, and since neither of them work, neither does \textbf{ground.}
+
+\item \emph{1(d):} \textbf{lift-if *} pulls the equality into the \textbf{IF} structure, by imposing the equality in each possibility of the \textbf{IF}-expressions instead of imposing the equality of the two outermost \textbf{IF}-expressions themselves. 
+	
+\end{document}
