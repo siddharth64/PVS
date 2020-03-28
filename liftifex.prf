@@ -1,0 +1,17 @@
+(liftifex
+ (iflemma 0
+  (iflemma-1 nil 3794366314 ("" (lift-if) (("" (assert) nil nil)) nil)
+   nil shostak))
+ (iflemma1 0
+  (iflemma1-2 "lift-if" 3794372176
+   ("" (lift-if) (("" (assert) nil nil)) nil) nil shostak)
+  (iflemma1-1 nil 3794371985
+   ("" (case "z/=y")
+    (("1" (assert) nil nil)
+     ("2" (assert)
+      (("2" (case "w/=u")
+        (("1" (assert) nil nil) ("2" (assert) nil nil)) nil))
+      nil))
+    nil)
+   nil shostak)))
+
