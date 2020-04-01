@@ -1,5 +1,5 @@
-# PVS
-Interactive Theorem Proving
+# PVS   
+*A1*:  Interactive Theorem Proving
 Proofs for 1 (b) are described as non-primitive proofs.
 
 *A2*:                                                             
