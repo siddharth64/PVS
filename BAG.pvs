@@ -1,0 +1,58 @@
+BAG % [ parameters ]
+		: THEORY
+
+  BEGIN
+
+  % ASSUMING
+   % assuming declarations
+  % ENDASSUMING
+  
+  Ball: TYPE = {B, W}
+  Bag : TYPE = [nat, nat]
+  NEBag : TYPE = {p:Bag | p`1 + p`2 >0}
+  BigBag: TYPE = {p:Bag | p`1 + p`2 >1}
+  b: VAR NEBag
+  p: VAR BigBag
+  x, y: Ball
+  pick2(p:BigBag): [[Ball,Ball] -> bool] =
+  {pair: [Ball, Ball] |
+   IF pair=(B,B) THEN p`1>=2
+   ELSIF pair=(B,W) or pair=(W,B) THEN p`1>=1 and p`2>=1
+   ELSE p`2>=2
+   ENDIF}
+
+  pick2arb(p): [Ball, Ball] = epsilon(pick2(p))
+
+  pickNE: LEMMA
+  (FORALL p: EXISTS (pair:[Ball,Ball]):pick2(p)(pair))
+  
+  removePair(p): Bag =
+  IF pair = (B,B) THEN (p`1-2,p`2+1)
+  ELSIF pair = (B,W) OR pair= (W,B) THEN (p`1, p`2-1)
+  ELSE (p`1, p`2-1)
+  ENDIF
+  WHERE pair=pick2arb(p)
+
+  reduceSize: LEMMA
+  (FORALL p: (q`1 + q`2 + 1 = p`1 +p`2) WHERE q=removePair(p))
+  
+  simulateGame(b): RECURSIVE Ball =
+  (IF b=(1,0) THEN B
+  ELSIF b=(0,1) THEN W
+  ELSE simulateGame(removePair(b))
+  ENDIF)
+  MEASURE (b`1 +b`2)
+
+  invariant: LEMMA
+  (FORALL p: even?(p`1) = even?(removePair(p)`1))
+
+  
+  
+  lastBall: THEOREM
+  (FORALL b: simulateGame(b) =
+  	  IF even?(b`1) THEN W
+	  ELSE B
+	  ENDIF)
+
+  
+  END BAG
